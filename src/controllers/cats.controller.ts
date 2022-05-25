@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
@@ -15,5 +15,10 @@ export class CatsController {
     @Post()
     async create(): Promise<string> {
         return 'This method creates a new cat';
+    }
+
+    @Delete(':id')
+    async delete(@Param('id') id): Promise<string> {
+        return `This method deletes the ${id} cat`;
     }
 }
