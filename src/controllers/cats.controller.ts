@@ -1,10 +1,15 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
     @Get()
     async findAll(): Promise<string> {
         return 'This method returns all cats';
+    }
+
+    @Get(':id')
+    async getById(@Param('id') id): Promise<string> {
+        return `This method returns the cat with the id ${id}`;
     }
 
     @Post()
